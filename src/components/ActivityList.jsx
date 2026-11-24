@@ -96,33 +96,37 @@ export default function ActivityList({ entries, onUpdate, onDelete }) {
               }}
             />
           ) : (
-            <div key={entry.id} className="flex items-center gap-3 py-2">
-              <span className="text-xs text-gray-400 dark:text-gray-500 w-20 shrink-0">
-                {entry.date}
-              </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400 w-24 shrink-0 truncate">
-                {entry.platform}
-              </span>
-              <span className="flex-1 text-sm text-gray-800 dark:text-gray-200 truncate">
-                {entry.problem}
-              </span>
-              <span
-                className={`text-xs px-2 py-0.5 rounded-full shrink-0 ${DIFFICULTY_BADGE[entry.difficulty]}`}
-              >
-                {entry.difficulty}
-              </span>
-              <button
-                onClick={() => setEditingId(entry.id)}
-                className="text-xs text-gray-400 hover:text-blue-600 shrink-0"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => onDelete(entry.id)}
-                className="text-xs text-gray-400 hover:text-red-600 shrink-0"
-              >
-                Delete
-              </button>
+            <div key={entry.id} className="flex flex-wrap items-center gap-2 py-2">
+              <div className="flex flex-1 min-w-0 flex-wrap items-center gap-2">
+                <span className="text-xs text-gray-400 dark:text-gray-500 shrink-0">
+                  {entry.date}
+                </span>
+                <span className="text-xs text-gray-500 dark:text-gray-400 shrink-0 max-w-[6rem] truncate">
+                  {entry.platform}
+                </span>
+                <span className="min-w-0 flex-1 text-sm text-gray-800 dark:text-gray-200 truncate">
+                  {entry.problem}
+                </span>
+                <span
+                  className={`text-xs px-2 py-0.5 rounded-full shrink-0 ${DIFFICULTY_BADGE[entry.difficulty]}`}
+                >
+                  {entry.difficulty}
+                </span>
+              </div>
+              <div className="flex items-center gap-3 shrink-0">
+                <button
+                  onClick={() => setEditingId(entry.id)}
+                  className="text-xs text-gray-400 hover:text-blue-600 shrink-0"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => onDelete(entry.id)}
+                  className="text-xs text-gray-400 hover:text-red-600 shrink-0"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ),
         )}
